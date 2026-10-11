@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#00343A">
+  <title>Meem Studio | منتجات رقمية</title>
+  <style>
+    /* =========================================================
+       MEEM STUDIO — EASY EDIT
+       1) الألوان: غيّرها من المتغيرات أدناه.
+       2) المنتجات: عدّل قائمة PRODUCTS في آخر الملف.
+       3) رقم واتساب: عدّل WHATSAPP_NUMBER في آخر الملف.
+       ========================================================= */
+    @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;500;600;700;800&display=swap');
+    :root{--dark:#00343A;--green:#019784;--cream:#f7f7f2;--text:#153337;--muted:#718184;--white:#fff;--line:#e5ecea;--shadow:0 16px 40px #00343a12}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--text);font-family:Almarai,Arial,sans-serif}
+    body.no-scroll{overflow:hidden}
+    button,input{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{cursor:pointer}
+    a{color:inherit}
+    .topbar{background:var(--dark);color:#fff;text-align:center;padding:10px 14px;font-size:12px;line-height:1.7}
+    .nav{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(5%,calc((100% - 1180px)/2));position:sticky;top:0;z-index:20}
+    .logo{font-size:24px;font-weight:800;letter-spacing:-1px;color:var(--dark);white-space:nowrap}.logo span{color:var(--green)}
+    .navlinks{display:flex;gap:25px;align-items:center;font-size:13px}.navlinks a{text-decoration:none}.navlinks a:hover{color:var(--green)}
+    .nav-actions{display:flex;gap:9px;align-items:center}
+    .cart-button{border:0;background:var(--dark);color:#fff;border-radius:12px;padding:12px 15px;display:flex;align-items:center;gap:9px}
+    .count{background:var(--green);color:#fff;min-width:23px;height:23px;border-radius:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;padding:0 5px}
+    .hero{max-width:1180px;margin:auto;padding:58px 5% 48px;display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center}
+    .eyebrow{font-size:12px;color:var(--green);font-weight:800;letter-spacing:1px;margin-bottom:15px}
+    h1{font-size:clamp(36px,5vw,62px);line-height:1.25;margin:0 0 18px;color:var(--dark)}
+    .hero p{font-size:15px;line-height:2.1;color:var(--muted);max-width:550px;margin:0}
+    .hero-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:25px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:14px 20px;text-decoration:none;font-weight:700;font-size:13px;transition:.2s}
+    .btn-primary{background:var(--green);color:#fff}.btn-primary:hover{background:#007f70;transform:translateY(-1px)}
+    .btn-light{background:#fff;color:var(--dark);border:1px solid var(--line)}
+    .hero-art{min-height:350px;border-radius:30px;background:linear-gradient(135deg,var(--dark),var(--green));position:relative;overflow:hidden;box-shadow:0 25px 60px #00343a20;padding:30px}
+    .orb{position:absolute;border:1px solid #ffffff35;border-radius:50%;width:300px;height:300px;right:-80px;top:-100px}
+    .sheet{position:absolute;background:#fff;border-radius:14px;padding:20px;box-shadow:0 20px 35px #001b1d55}
+    .sheet-one{width:210px;height:255px;top:45px;right:45px;transform:rotate(5deg)}
+    .sheet-two{width:190px;height:230px;bottom:25px;left:42px;transform:rotate(-7deg)}
+    .sheet .mini{font-size:10px;color:var(--green);font-weight:700}.sheet h3{font-size:24px;color:var(--dark);line-height:1.35;margin:22px 0 12px}.skeleton{height:7px;border-radius:9px;background:#e2eeeb;margin:9px 0}.skeleton.short{width:55%}.swatches{display:flex;gap:7px;margin-top:22px}.swatches i{width:26px;height:26px;border-radius:7px;background:var(--dark)}.swatches i:nth-child(2){background:var(--green)}.swatches i:nth-child(3){background:#e9cda6}.swatches i:nth-child(4){background:#e9efec}
+    .section{max-width:1180px;margin:auto;padding:45px 5% 60px}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:24px}
+    .section-heading h2{font-size:30px;color:var(--dark);margin:0 0 9px}.section-heading p{font-size:12px;color:var(--muted);margin:0;line-height:1.8}
+    .category-list{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 23px}
+    .category-btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:25px;padding:10px 15px;font-size:12px}
+    .category-btn.active{background:var(--dark);border-color:var(--dark);color:#fff}
+    .products-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+    .product-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s;min-width:0}
+    .product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .product-image{height:220px;background:#eaf3f0;display:flex;align-items:center;justify-content:center;padding:22px;overflow:hidden}
+    .product-image img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+    .placeholder-cover{width:78%;height:90%;background:#fff;border-radius:9px;box-shadow:0 12px 25px #00343a1b;padding:17px;display:flex;flex-direction:column;justify-content:space-between}
+    .placeholder-cover .cover-cat{font-size:10px;color:var(--green);font-weight:700}
+    .placeholder-cover .cover-word{font-size:clamp(18px,2vw,27px);font-weight:800;color:var(--dark);overflow-wrap:anywhere}
+    .placeholder-cover .cover-brand{font-size:9px;letter-spacing:1px;color:#8b9b98}
+    .product-info{padding:17px}
+    .tag{display:inline-block;font-size:10px;color:var(--green);background:#e8f7f4;padding:6px 9px;border-radius:20px}
+    .product-info h3{font-size:15px;line-height:1.6;margin:12px 0 7px;color:var(--dark)}
+    .product-info p{font-size:11px;color:var(--muted);line-height:1.9;margin:0;min-height:42px}
+    .product-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:16px}
+    .product-price{font-size:16px;font-weight:800;color:var(--dark);white-space:nowrap}
+    .add-btn{border:0;background:var(--dark);color:#fff;padding:10px 12px;border-radius:9px;font-size:11px;font-weight:700;white-space:nowrap}
+    .add-btn:hover{background:var(--green)}
+    .features{background:#fff}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .feature{padding:23px;border:1px solid var(--line);border-radius:16px}
+    .feature-icon{font-size:25px;color:var(--green)}.feature h3{font-size:14px;color:var(--dark)}.feature p{font-size:12px;color:var(--muted);line-height:1.9;margin-bottom:0}
+    .footer{background:var(--dark);color:#fff;padding:38px 5%;display:flex;justify-content:space-between;align-items:center;gap:25px}
+    .footer p{color:#b9cccd;font-size:12px;line-height:2;margin:8px 0 0}.footer-links{display:flex;gap:18px;font-size:12px}.footer-links a{text-decoration:none;color:#e7f0ef}
+    .empty-state{grid-column:1/-1;text-align:center;padding:40px 15px;background:#fff;border:1px dashed var(--line);border-radius:16px;color:var(--muted);font-size:13px}
+    /* Cart drawer */
+    .overlay{position:fixed;inset:0;background:#001f22a8;z-index:50;opacity:0;visibility:hidden;transition:.2s}
+    .overlay.open{opacity:1;visibility:visible}
+    .cart-drawer{position:fixed;z-index:51;top:0;bottom:0;left:0;width:min(440px,100%);background:#fff;display:flex;flex-direction:column;transform:translateX(-105%);transition:transform .25s ease;box-shadow:10px 0 40px #0002}
+    .cart-drawer.open{transform:translateX(0)}
+    .cart-head{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+    .cart-head h2{font-size:20px;color:var(--dark);margin:0}.close-cart{border:0;background:#f1f5f4;width:38px;height:38px;border-radius:50%;font-size:22px;color:var(--dark)}
+    .cart-items{padding:14px 20px;overflow:auto;flex:1}
+    .cart-item{display:grid;grid-template-columns:1fr auto;gap:10px;padding:15px 0;border-bottom:1px solid var(--line)}
+    .cart-item h3{font-size:13px;line-height:1.7;margin:0 0 5px;color:var(--dark)}.cart-item .item-price{font-size:12px;color:var(--green);font-weight:700}
+    .qty-controls{display:flex;align-items:center;gap:8px;margin-top:10px}
+    .qty-controls button{border:1px solid var(--line);background:#fff;border-radius:7px;width:28px;height:28px;color:var(--dark)}
+    .qty-controls span{font-size:12px;min-width:14px;text-align:center}
+    .remove-item{border:0;background:transparent;color:#b94c4c;font-size:11px;padding:5px 0}
+    .cart-footer{padding:18px 20px 22px;border-top:1px solid var(--line);background:#fff}
+    .cart-total{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--dark);margin-bottom:15px}
+    .checkout-btn{width:100%;border:0;background:#168b50;color:#fff;border-radius:12px;padding:15px;font-weight:800}
+    .checkout-btn:disabled{opacity:.45;cursor:not-allowed}
+    .cart-note{font-size:10px;line-height:1.8;color:var(--muted);text-align:center;margin:10px 0 0}
+    .toast{position:fixed;bottom:22px;right:22px;background:var(--dark);color:#fff;padding:13px 17px;border-radius:12px;z-index:80;font-size:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transform:translateY(8px);transition:.2s}
+    .toast.show{opacity:1;transform:translateY(0)}
+    @media(max-width:800px){.nav{height:68px;padding:0 4%}.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:38px;gap:28px}.hero-art{min-height:320px}.products-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product-image{height:175px;padding:14px}.product-info{padding:12px}.product-info h3{font-size:13px}.product-info p{font-size:10px}.product-price{font-size:14px}.add-btn{padding:9px;font-size:10px}.feature-grid{grid-template-columns:1fr}.section{padding:38px 4% 48px}.footer{padding:30px 4%;align-items:flex-start;flex-direction:column}.section-heading h2{font-size:25px}}
+    @media(max-width:420px){.logo{font-size:20px}.cart-button{padding:10px 11px;font-size:12px}.hero-art{min-height:280px}.sheet-one{width:175px;height:220px;right:24px;top:35px}.sheet-two{width:155px;height:190px;left:20px;bottom:20px}.sheet h3{font-size:20px}.product-image{height:145px;padding:10px}.placeholder-cover{padding:12px}.placeholder-cover .cover-word{font-size:18px}.product-info h3{font-size:12px}.product-info p{min-height:52px}.product-bottom{align-items:flex-start;flex-direction:column}.add-btn{width:100%}.product-price{font-size:13px}}
+  </style>
+</head>
+<body>
+  <div class="topbar">منتجات رقمية جاهزة • تصميمات قابلة للتعديل • اطلب كل منتجاتك مرة واحدة عبر واتساب</div>
+  <nav class="nav">
+    <a class="logo" href="#home" aria-label="Meem Studio">Meem<span>Studio</span></a>
+    <div class="navlinks"><a href="#home">الرئيسية</a><a href="#products">المنتجات</a><a href="#about">عن ميم</a></div>
+    <div class="nav-actions">
+      <button class="cart-button" onclick="openCart()" aria-label="فتح السلة">🛒 <span>السلة</span> <span class="count" id="cartCount">0</span></button>
+    </div>
+  </nav>
+
+  <main id="home">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">MEEM STUDIO · DIGITAL PRODUCTS</div>
+        <h1>تصميمات رقمية<br>جاهزة لك.</h1>
+        <p>قوالب وملفات رقمية مصممة بعناية لتختصر عليك الوقت وتساعدك تظهر بشكل احترافي. أضف المنتجات التي تريدها إلى السلة، ثم أرسل طلبك كاملًا عبر واتساب.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#products">اكتشف المنتجات</a><a class="btn btn-light" href="#about">عن ميم ستوديو</a></div>
+      </div>
+      <div class="hero-art" aria-label="تصميم توضيحي لقوالب رقمية">
+        <div class="orb"></div>
+        <div class="sheet sheet-one"><div class="mini">MEEM STUDIO</div><h3>Brand<br>Guidelines</h3><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton short"></div><div class="swatches"><i></i><i></i><i></i><i></i></div></div>
+        <div class="sheet sheet-two"><div class="mini">DIGITAL PRODUCTS</div><h3>Creative<br>Templates</h3><div class="skeleton"></div><div class="skeleton short"></div><div class="skeleton"></div><div class="mini">DESIGNED FOR YOU</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="section-heading"><div><h2>منتجاتنا</h2><p>اختر المنتجات التي تحتاجها وأضفها إلى سلتك قبل إتمام الطلب.</p></div></div>
+      <div class="category-list" id="categoryList" aria-label="تصنيفات المنتجات"></div>
+      <div class="products-grid" id="productGrid"></div>
+    </section>
+
+    <section class="section features" id="about">
+      <div class="section-heading"><div><h2>لماذا Meem Studio؟</h2><p>بسيط، عملي، ومصمم للاستخدام الحقيقي.</p></div></div>
+      <div class="feature-grid">
+        <div class="feature"><div class="feature-icon">✦</div><h3>تصميم احترافي</h3><p>ملفات مرتبة بصريًا ومصممة لتمنح مشروعك مظهرًا احترافيًا.</p></div>
+        <div class="feature"><div class="feature-icon">↗</div><h3>سهل الاستخدام</h3><p>قوالب واضحة وقابلة للتعديل لتبدأ العمل عليها بسهولة.</p></div>
+        <div class="feature"><div class="feature-icon">♡</div><h3>طلب سهل</h3><p>اجمع المنتجات التي تريدها في سلة واحدة وأرسل تفاصيل الطلب عبر واتساب.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div><div class="logo" style="color:#fff">Meem<span>Studio</span></div><p>Digital Products · Graphic Design<br>منتجات رقمية وحلول تصميم إبداعية.</p></div>
+    <div class="footer-links"><a href="#home">الرئيسية</a><a href="#products">المنتجات</a><a href="#about">عن ميم</a></div>
+  </footer>
+
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true">
+    <div class="cart-head"><h2>سلة التسوق</h2><button class="close-cart" onclick="closeCart()" aria-label="إغلاق السلة">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>الإجمالي</span><span id="cartTotal">0 SAR</span></div>
+      <button class="checkout-btn" id="checkoutBtn" onclick="checkoutWhatsApp()">إتمام الطلب عبر واتساب ←</button>
+      <p class="cart-note">سيتم فتح واتساب برسالة تحتوي على المنتجات والكميات والإجمالي. لا يتم الدفع داخل هذا الموقع.</p>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    /* =========================================================
+       ✏️ تعديل المنتجات هنا فقط — كل منتج داخل { } مستقل:
+       name: اسم المنتج الذي يظهر للعميل
+       category: اسم التصنيف (استخدم الاسم نفسه لضم المنتجات معًا)
+       price: السعر كرقم فقط بدون كتابة العملة
+       currency: العملة التي تظهر بجانب السعر
+       description: وصف قصير
+       word: كلمة تظهر على صورة المنتج إذا لم تضف image
+       image: رابط صورة المنتج (اختياري)؛ اتركه "" لاستخدام الغلاف التلقائي
+       code: رمز المنتج الذي سيظهر في رسالة واتساب
+       انسخ منتجًا كاملًا والصقه مع فاصلة بين المنتجات لإضافة منتج جديد.
+       ========================================================= */
+
+    const PRODUCTS = [
+      { name: "Brand Guidelines Template", category: "الهوية البصرية", price: 49, currency: "SAR", description: "قالب إرشادات هوية بصرية قابل للتعديل.", word: "Brand", image: "", code: "MS-001" },
+      { name: "ATS Resume Bundle", category: "السير الذاتية", price: 29, currency: "SAR", description: "قوالب سيرة ذاتية مرتبة وسهلة التعديل.", word: "Resume", image: "", code: "MS-002" },
+      { name: "Social Media Templates", category: "السوشيال ميديا", price: 39, currency: "SAR", description: "قوالب منشورات تساعدك على تنظيم محتواك.", word: "Social", image: "", code: "MS-003" },
+      { name: "Business Presentation", category: "العروض التقديمية", price: 45, currency: "SAR", description: "قالب عرض تقديمي أنيق للأعمال.", word: "PPT", image: "", code: "MS-004" },
+      { name: "Wedding Card Set", category: "بطاقات ومناسبات", price: 25, currency: "SAR", description: "تصاميم بطاقات مناسبات قابلة للتخصيص.", word: "Wedding", image: "", code: "MS-005" },
+      { name: "Creative Portfolio", category: "العروض التقديمية", price: 35, currency: "SAR", description: "قالب بورتفوليو لعرض أعمالك بطريقة منظمة.", word: "Portfolio", image: "", code: "MS-006" }
+    ];
+
+    // ✏️ اكتب رقم واتساب مع مفتاح الدولة، أرقام فقط بدون + أو مسافات.
+    // مثال سعودي: 9665XXXXXXXX — استبدله برقمك الحقيقي قبل النشر.
+    const WHATSAPP_NUMBER = "9665XXXXXXXX";
+
+    const CART_STORAGE_KEY = "meemStudioCartV1";
+    let cart = loadCart();
+    let activeCategory = "الكل";
+    let toastTimer;
+
+    function loadCart() {
+      try { return JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || "{}"); }
+      catch (e) { return {}; }
+    }
+    function saveCart() {
+      try { localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart)); } catch (e) {}
+    }
+    function formatPrice(amount, currency) {
+      return new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(amount) + " " + (currency || "SAR");
+    }
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+    }
+    function getProduct(code) { return PRODUCTS.find(p => p.code === code); }
+
+    function renderCategories() {
+      const categories = ["الكل", ...new Set(PRODUCTS.map(p => p.category).filter(Boolean))];
+      const container = document.getElementById("categoryList");
+      if (!categories.includes(activeCategory)) activeCategory = "الكل";
+      container.innerHTML = categories.map(cat =>
+        `<button class="category-btn ${cat === activeCategory ? "active" : ""}" onclick="setCategory('${escapeHTML(cat).replace(/'/g, "\\'")}')">${escapeHTML(cat)}</button>`
+      ).join("");
+    }
+    function setCategory(category) {
+      activeCategory = category;
+      renderCategories();
+      renderProducts();
+    }
+    function productVisual(product) {
+      if (product.image && product.image.trim()) {
+        return `<img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="placeholder-cover" style="display:none"><div class="cover-cat">${escapeHTML(product.category)}</div><div class="cover-word">${escapeHTML(product.word || product.name)}</div><div class="cover-brand">MEEM STUDIO</div></div>`;
+      }
+      return `<div class="placeholder-cover"><div class="cover-cat">${escapeHTML(product.category)}</div><div class="cover-word">${escapeHTML(product.word || product.name)}</div><div class="cover-brand">MEEM STUDIO</div></div>`;
+    }
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+      const visible = activeCategory === "الكل" ? PRODUCTS : PRODUCTS.filter(p => p.category === activeCategory);
+      if (!visible.length) {
+        grid.innerHTML = `<div class="empty-state">لا توجد منتجات في هذا التصنيف حاليًا.</div>`;
+        return;
+      }
+      grid.innerHTML = visible.map(p => `
+        <article class="product-card">
+          <div class="product-image">${productVisual(p)}</div>
+          <div class="product-info">
+            <span class="tag">${escapeHTML(p.category)}</span>
+            <h3>${escapeHTML(p.name)}</h3>
+            <p>${escapeHTML(p.description || "")}</p>
+            <div class="product-bottom">
+              <span class="product-price">${formatPrice(Number(p.price) || 0, p.currency)}</span>
+              <button class="add-btn" onclick="addToCart('${escapeHTML(p.code).replace(/'/g, "\\'")}')">+ أضف للسلة</button>
+            </div>
+          </div>
+        </article>`).join("");
+    }
+    function addToCart(code) {
+      const product = getProduct(code);
+      if (!product) return;
+      cart[code] = (cart[code] || 0) + 1;
+      saveCart(); renderCart(); showToast("تمت إضافة المنتج إلى السلة");
+    }
+    function changeQty(code, delta) {
+      if (!cart[code]) return;
+      cart[code] += delta;
+      if (cart[code] <= 0) delete cart[code];
+      saveCart(); renderCart();
+    }
+    function removeFromCart(code) {
+      delete cart[code]; saveCart(); renderCart();
+    }
+    function getCartLines() {
+      return Object.entries(cart).map(([code, qty]) => ({ product: getProduct(code), qty }))
+        .filter(line => line.product && line.qty > 0);
+    }
+    function renderCart() {
+      const lines = getCartLines();
+      const count = lines.reduce((sum, line) => sum + line.qty, 0);
+      document.getElementById("cartCount").textContent = count;
+      const currency = lines[0]?.product.currency || "SAR";
+      const total = lines.reduce((sum, line) => sum + (Number(line.product.price) || 0) * line.qty, 0);
+      document.getElementById("cartTotal").textContent = formatPrice(total, currency);
+      document.getElementById("checkoutBtn").disabled = lines.length === 0;
+      const container = document.getElementById("cartItems");
+      if (!lines.length) {
+        container.innerHTML = `<div class="empty-state">سلتك فارغة حاليًا.<br><br>أضف المنتجات التي تريدها ثم ارجع إلى السلة لإتمام الطلب.</div>`;
+        return;
+      }
+      container.innerHTML = lines.map(({product:p, qty}) => `
+        <div class="cart-item">
+          <div>
+            <h3>${escapeHTML(p.name)}</h3>
+            <div class="item-price">${formatPrice((Number(p.price)||0) * qty, p.currency)}</div>
+            <div class="qty-controls">
+              <button onclick="changeQty('${escapeHTML(p.code).replace(/'/g, "\\'")}',-1)" aria-label="تقليل الكمية">−</button>
+              <span>${qty}</span>
+              <button onclick="changeQty('${escapeHTML(p.code).replace(/'/g, "\\'")}',1)" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="remove-item" onclick="removeFromCart('${escapeHTML(p.code).replace(/'/g, "\\'")}')">حذف</button>
+        </div>`).join("");
+    }
+    function openCart() {
+      document.getElementById("overlay").classList.add("open");
+      document.getElementById("cartDrawer").classList.add("open");
+      document.getElementById("cartDrawer").setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+      renderCart();
+    }
+    function closeCart() {
+      document.getElementById("overlay").classList.remove("open");
+      document.getElementById("cartDrawer").classList.remove("open");
+      document.getElementById("cartDrawer").setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+    }
+    function checkoutWhatsApp() {
+      const lines = getCartLines();
+      if (!lines.length) { showToast("أضف منتجًا واحدًا على الأقل إلى السلة"); return; }
+      if (WHATSAPP_NUMBER.includes("X") || !/^\d{8,15}$/.test(WHATSAPP_NUMBER)) {
+        showToast("عدّل رقم واتساب في الكود قبل استقبال الطلبات");
+        return;
+      }
+      const currency = lines[0].product.currency || "SAR";
+      const total = lines.reduce((sum, line) => sum + (Number(line.product.price)||0) * line.qty, 0);
+      let message = "السلام عليكم، أرغب في طلب المنتجات التالية من Meem Studio:\n\n";
+      lines.forEach((line, index) => {
+        const p = line.product;
+        message += `${index + 1}. ${p.name}\nرمز المنتج: ${p.code}\nالكمية: ${line.qty}\nالسعر: ${formatPrice((Number(p.price)||0) * line.qty, p.currency)}\n\n`;
+      });
+      message += `الإجمالي: ${formatPrice(total, currency)}\n\nيرجى تأكيد توفر المنتجات وطريقة الدفع والتسليم. شكرًا لكم.`;
+      window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+    }
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message; toast.classList.add("show");
+      clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeCart(); });
+
+    renderCategories();
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>
